@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PostPulse</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --text: #f0ece4;
+      --accent: #e8ff47;
+      --muted: #555;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      letter-spacing: -0.02em;
+      color: var(--text);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+      opacity: 0;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Policy pages */
+    .policy {
+      display: none;
+      max-width: 640px;
+      padding: 4rem 2rem;
+      line-height: 1.8;
+      font-size: 0.95rem;
+      color: #aaa;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .policy h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .policy h3 {
+      color: var(--text);
+      margin: 1.5rem 0 0.5rem;
+      font-weight: 400;
+    }
+
+    .policy p { margin-bottom: 1rem; }
+
+    .policy a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      transition: color 0.2s;
+    }
+    .back:hover { color: var(--accent); }
+
+    #home { text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div id="home">
+    <h1>Post<span>Pulse</span></h1>
+    <nav>
+      <a href="#" onclick="show('privacy')">Privacy Policy</a>
+      <a href="#" onclick="show('terms')">Terms of Service</a>
+    </nav>
+  </div>
+
+  <div class="policy" id="privacy">
+    <button class="back" onclick="show('home')">← Back</button>
+    <h2>Privacy Policy</h2>
+    <p>Last updated: March 2026</p>
+    <p>PostPulse ("we", "our", or "us") is a personal analytics tool that connects to your TikTok account to display your post performance data.</p>
+
+    <h3>Data We Access</h3>
+    <p>With your permission, PostPulse accesses your TikTok account data including post metrics (views, likes, shares, comments) via the TikTok API. We do not access your private messages or any data beyond what is necessary for analytics.</p>
+
+    <h3>How We Use Your Data</h3>
+    <p>Your data is used solely to display your own TikTok performance metrics to you. We do not sell, share, or distribute your data to any third parties.</p>
+
+    <h3>Data Storage</h3>
+    <p>PostPulse does not store your TikTok credentials. Access tokens are stored locally on your device only.</p>
+
+    <h3>Third-Party Services</h3>
+    <p>PostPulse uses the TikTok API. Your use of TikTok is governed by <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank">TikTok's Privacy Policy</a>.</p>
+
+    <h3>Contact</h3>
+    <p>For any questions, please reach out via our GitHub repository.</p>
+  </div>
+
+  <div class="policy" id="terms">
+    <button class="back" onclick="show('home')">← Back</button>
+    <h2>Terms of Service</h2>
+    <p>Last updated: March 2026</p>
+    <p>By using PostPulse, you agree to these terms.</p>
+
+    <h3>Use of Service</h3>
+    <p>PostPulse is a personal analytics tool intended for individual use. You may only connect TikTok accounts that you own or have authorization to access.</p>
+
+    <h3>No Warranty</h3>
+    <p>PostPulse is provided "as is" without warranty of any kind. We make no guarantees about uptime, accuracy of data, or continued availability.</p>
+
+    <h3>Limitation of Liability</h3>
+    <p>PostPulse is not liable for any damages arising from your use of the service, including but not limited to loss of data or account access.</p>
+
+    <h3>TikTok Compliance</h3>
+    <p>You agree to use PostPulse in compliance with <a href="https://www.tiktok.com/legal/terms-of-service" target="_blank">TikTok's Terms of Service</a>.</p>
+
+    <h3>Changes</h3>
+    <p>We may update these terms at any time. Continued use of PostPulse constitutes acceptance of any changes.</p>
+  </div>
+
+  <script>
+    function show(page) {
+      document.getElementById('home').style.display = page === 'home' ? 'block' : 'none';
+      document.getElementById('privacy').style.display = page === 'privacy' ? 'block' : 'none';
+      document.getElementById('terms').style.display = page === 'terms' ? 'block' : 'none';
+      window.scrollTo(0, 0);
+      return false;
+    }
+  </script>
+</body>
+</html>
